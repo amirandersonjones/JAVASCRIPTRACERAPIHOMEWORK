@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>AMIR JONES| F1 RACER JS API CALL</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- bring in axios - above our js script or it wont have loaded when we try to use it -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <!-- bring in our own js script -->
+    <script src="main.js" defer></script>
+    <style>
+        body{
+            background-color: rgb(109, 175, 148);
+        }
+        .topnav {
+             background-color: rgb(51, 51, 51);
+             overflow: hidden;
+        }
+        .topnav a {
+            float: left;
+             color: #18681f;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: rgb(16, 107, 80);
+            color: black;
+        }
+
+        img {
+             border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </div>
+      
+    <div class="row">
+        <form id="driverForm" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="Season" placeholder="Season...">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="Round" placeholder="Round...">
+            </div>
+            <button type="submit" class="btn btn-info mb-2">Populate Standings</button>
+        </form>
+        <button class="btn btn-info mb-2 ml-2" onclick="cleardriverData();">Clear Data</button>
+        <table class="table table-striped table-dark mt-2">
+            <thead>
+                <tr>
+                    <th>F1 RACER API| DRVER SEASON AND ROUND DATA:</th>
+                </tr>
+            </thead>
+            <tbody id='drivertbody'>
+                <!-- Plan to make a tr for each new api response
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h1 class="headings">ERGAST F1 DRIVERS INFO BY SEASON AND ROUNDS</h1>
+<div class="row justify-content-center">
+    <div class="gallary">
+        <ul>
+            <li>
+                <img src="https://i.ibb.co/dQdCXbv/max-verstappen-red-bull-racing.jpg" alt="A1-Fyt-Tb-VFDL-AC-SX522" border="0">
+            </li>
+        </ul>
+   
+ 
+</body>
+
+
+</html>
