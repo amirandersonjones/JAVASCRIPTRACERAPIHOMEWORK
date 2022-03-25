@@ -4,8 +4,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     let season = event.path[0][0].value
     let round = event.path[0][1].value
-    top7drivers = f1data.MRData.StandingsTable.StandingsLists[0].DriverStandings.slice(0, 7)
-    console.log(top7drivers)
+    
     console.log(season);
     console.log(round);
     // start the api request process
@@ -16,12 +15,13 @@ form.addEventListener('submit', (event) => {
 //set up the api call first is the easiest
 
 let getData = async (season, round) => {
-     try 
+     try {
          let response = await axios.get (`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`);
         console.log(response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings); //to see the data
         return response.data
      } catch (error) {
          console.log(error);
+         
      }
  }
 //loadData(); ///use this to see the results of the response
@@ -33,7 +33,9 @@ let loadData = async(season, round) => { //when loadDriver is called it then cal
     //calls our api call function
     let data = await getData(season, round);
     console.log(data)
+    // console.log(top7drivers)
     //creates new html based on the results of the api call
+    let top7drivers = data.MRData.StandingsTable.StandingsLists[0].DriverStandings.slice(0, 7)
     top7drivers.forEach( driver =>{
         addDriverRow(driver.position,
             `${driver.Driver.givenName} ${driver.Driver.familyName}`,
@@ -43,16 +45,20 @@ let loadData = async(season, round) => { //when loadDriver is called it then cal
             driver.Driver.url,
             driver.Constructors[0].url)
     })
-    }
-
     function addDriverRow(pos, name, nation, sponsor, points, page, sponsorPage){
-        let html = `<tr><td>${pos}</td>
+        let new_row = `<tr><td>${pos}</td>
         <td><a href=${page} target="_blank" rel="noopener noreferrer">${name}</a></td>
         <td>${nation}</td><td><a href=${sponsorPage} target="_blank" rel="noopener noreferrer">${sponsor}</td>
         <td>${points}</td></tr>` 
-        driverTableBody.innerHTML += html;
         document.getElementById('drivertbody').insertAdjacentHTML('afterbegin', new_row);
     }
+}
+    
+let cleardriverData = () => {
+         document.getElementById('drivertbody').innerHTML='';
+   
+}
+   
     
     // let new_row = `<tr>
     // <th scope='row'>${data.name}</th> 
